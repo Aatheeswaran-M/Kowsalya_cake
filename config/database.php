@@ -2,10 +2,12 @@
 // config/database.php
 
 class Database {
-    private $host = "gateway01.ap-southeast-1.prod.aws.tidbcloud.com";
+   private $host = "gateway01.ap-southeast-1.prod.aws.tidbcloud.com";
+    private $port = 4000;
     private $db_name = "test";
     private $username = "wrvr86JNUurTeWf.root";
-    private $password = "Xwfgvu1YVDy24039";
+    private $password = "qKK70gh40nF28kL0";  // <-- Change immediately
+    private $ca = "C:\Users\LAB8\Downloads";
     public $conn;
 
     public function getConnection() {
@@ -26,5 +28,6 @@ class Database {
 }
 
 ?>
+
 
 
