@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Kowsalya Cake Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f6fa;
+        }
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #FF6B9D;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .search-filter {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .search-bar button {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #FF6B9D 0%, #FFA07A 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .categories {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            padding: 0.6rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .category-btn:hover, .category-btn.active {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FFA07A 100%);
+            color: white;
+            border-color: transparent;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255,107,157,0.3);
+        }
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        .product-category {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            font-size: 1.5rem;
+            color: #FF6B9D;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #FF6B9D 0%, #FFA07A 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+        .cart-count {
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        .no-products {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-birthday-cake"></i>
+            Kowsalya Cake Shop
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="login.html">Login</a>
+            <a href="#" onclick="alert('Cart: ' + (localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')).length : 0) + ' items')">
+                <i class="fas fa-shopping-cart"></i> Cart<span class="cart-count" id="cartCount">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="search-filter">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for cakes..." onkeyup="filterProducts()">
+                <button onclick="filterProducts()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div class="categories">
+                <button class="category-btn active" data-category="all" onclick="filterCategory('all')">All Cakes</button>
+                <button class="category-btn" data-category="birthday" onclick="filterCategory('birthday')">Birthday</button>
+                <button class="category-btn" data-category="wedding" onclick="filterCategory('wedding')">Wedding</button>
+                <button class="category-btn" data-category="celebration" onclick="filterCategory('celebration')">Celebration</button>
+                <button class="category-btn" data-category="custom" onclick="filterCategory('custom')">Custom</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <script>
+        // Sample product data
+        const products = [
+            { id: 1, name: "Chocolate Birthday Cake", category: "birthday", price: 899, image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400", description: "Rich chocolate cake perfect for birthdays" },
+            { id: 2, name: "Vanilla Dream Cake", category: "birthday", price: 799, image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400", description: "Classic vanilla with cream frosting" },
+            { id: 3, name: "Red Velvet Delight", category: "celebration", price: 999, image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=400", description: "Smooth red velvet with cream cheese" },
+            { id: 4, name: "Wedding Elegance", category: "wedding", price: 2999, image: "https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=400", description: "3-tier elegant wedding cake" },
+            { id: 5, name: "Strawberry Special", category: "birthday", price: 899, image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400", description: "Fresh strawberry with cream" },
+            { id: 6, name: "Black Forest", category: "celebration", price: 949, image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400", description: "Classic black forest with cherries" },
+            { id: 7, name: "Custom Designer Cake", category: "custom", price: 1499, image: "https://images.unsplash.com/photo-1562777717-dc6984f65a63?w=400", description: "Fully customizable design" },
+            { id: 8, name: "Fruit Cake Deluxe", category: "celebration", price: 1099, image: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400", description: "Mixed fruit premium cake" },
+            { id: 9, name: "Royal Wedding Cake", category: "wedding", price: 3999, image: "https://images.unsplash.com/photo-1519691228423-c8bcf395b91e?w=400", description: "4-tier royal design" },
+            { id: 10, name: "Rainbow Birthday", category: "birthday", price: 1199, image: "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=400", description: "Colorful rainbow layers" },
+            { id: 11, name: "Butterscotch Bliss", category: "celebration", price: 849, image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400", description: "Rich butterscotch flavor" },
+            { id: 12, name: "Photo Print Cake", category: "custom", price: 1299, image: "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=400", description: "Your photo on cake" }
+        ];
+
+        let currentCategory = 'all';
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function renderProducts(productsToShow) {
+            const grid = document.getElementById('productsGrid');
+            if (productsToShow.length === 0) {
+                grid.innerHTML = '<div class="no-products">No products found. Try different category or search term.</div>';
+                return;
+            }
+            
+            grid.innerHTML = productsToShow.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">${product.category.toUpperCase()}</div>
+                        <div class="product-name">${product.name}</div>
+                        <p style="color: #7f8c8d; font-size: 0.9rem;">${product.description}</p>
+                        <div class="product-price">₹${product.price}</div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            let filtered = products;
+
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+
+            if (searchTerm) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm) || 
+                    p.description.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            renderProducts(filtered);
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert(`"${product.name}" added to cart!`);
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        // Check for category hash in URL
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && ['birthday', 'wedding', 'celebration', 'custom'].includes(hash)) {
+                filterCategory(hash);
+            } else {
+                renderProducts(products);
+            }
+            updateCartCount();
+        });
+
+        // Initial render
+        renderProducts(products);
+    </script>
+</body>
+</html>
