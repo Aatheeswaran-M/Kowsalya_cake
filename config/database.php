@@ -2,10 +2,10 @@
 // config/database.php
 
 class Database {
-    private $host = "localhost";
+    private $host = "sql10.freesqldatabase.com";
     private $db_name = "kowsalya_cake_shop";
-    private $username = "root";
-    private $password = "";
+    private $username = "sql10811226";
+    private $password = "vMmDHTt6Ve";
     public $conn;
 
     public function getConnection() {
@@ -24,4 +24,5 @@ class Database {
         return $this->conn;
     }
 }
+
 ?>
