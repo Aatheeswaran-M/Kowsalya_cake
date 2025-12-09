@@ -1,2 +1,2 @@
-# Online-Shopping-website
-Cake shop using Mysql store database
+# Kowsalya Cake Shop
+Online cake shopping website using PHP and MySQL/TiDB Cloud database
