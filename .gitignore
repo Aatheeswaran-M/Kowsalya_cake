@@ -1,0 +1,35 @@
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependencies
+/vendor/
+composer.phar
+composer.lock
+
+# Logs
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Uploaded files (if storing locally)
+/assets/uploads/*
+!/assets/uploads/.gitkeep
+
+# Database backups
+*.sql
+!database/schema*.sql

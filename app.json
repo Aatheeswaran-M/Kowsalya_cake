@@ -1,0 +1,40 @@
+{
+  "name": "Kowsalya Cake Shop",
+  "description": "Online cake shopping website built with PHP and MySQL",
+  "repository": "https://github.com/Aatheeswaran-M/Kowsalya_cake",
+  "env": {
+    "DB_HOST": {
+      "description": "Database host (TiDB Cloud)",
+      "value": "gateway01.ap-southeast-1.prod.aws.tidbcloud.com"
+    },
+    "DB_PORT": {
+      "description": "Database port",
+      "value": "4000"
+    },
+    "DB_NAME": {
+      "description": "Database name",
+      "required": true
+    },
+    "DB_USERNAME": {
+      "description": "Database username",
+      "required": true
+    },
+    "DB_PASSWORD": {
+      "description": "Database password",
+      "required": true
+    },
+    "APP_ENV": {
+      "description": "Application environment",
+      "value": "production"
+    },
+    "APP_DEBUG": {
+      "description": "Debug mode (set to false in production)",
+      "value": "false"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ]
+}
