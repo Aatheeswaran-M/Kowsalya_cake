@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Instructions - Kowsalya Cake Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 3rem;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+        .options {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .option-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        .option-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.2);
+            transform: translateY(-2px);
+        }
+        .option-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+        .badge.recommended {
+            background: #ff6b9d;
+        }
+        .steps {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        .steps ol {
+            margin-left: 1.5rem;
+        }
+        .steps li {
+            margin: 0.5rem 0;
+        }
+        .link-box {
+            background: #e7f3ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .link-box a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .link-box a:hover {
+            text-decoration: underline;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎂 Kowsalya Cake Shop</h1>
+        <p style="color: #666; font-size: 1.1rem;">Deployment Instructions & Live Link Guide</p>
+        
+        <div class="success">
+            <strong>✅ All Fixes Applied Successfully!</strong><br>
+            Your code has been updated with security improvements and deployment configurations.
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Important:</strong> This is a PHP application and <strong>cannot</strong> be hosted on GitHub Pages. 
+            GitHub Pages only supports static HTML/CSS/JavaScript. You need a PHP-enabled hosting platform.
+        </div>
+
+        <div class="link-box">
+            <strong>📦 Your GitHub Repository:</strong><br>
+            <a href="https://github.com/Aatheeswaran-M/Kowsalya_cake" target="_blank">
+                https://github.com/Aatheeswaran-M/Kowsalya_cake
+            </a>
+        </div>
+
+        <h2 style="margin: 2rem 0 1rem;">🚀 Deployment Options (FREE)</h2>
+
+        <div class="options">
+            <div class="option-card">
+                <h3>1. Railway.app <span class="badge recommended">RECOMMENDED</span></h3>
+                <p><strong>Live Link Format:</strong> <code>https://your-app.up.railway.app</code></p>
+                <div class="steps">
+                    <ol>
+                        <li>Visit <a href="https://railway.app" target="_blank">railway.app</a></li>
+                        <li>Sign in with GitHub</li>
+                        <li>Click "New Project" → "Deploy from GitHub repo"</li>
+                        <li>Select <code>Kowsalya_cake</code> repository</li>
+                        <li>Add environment variables (see below)</li>
+                        <li>Deploy automatically ✨</li>
+                    </ol>
+                </div>
+                <p><strong>Why Railway?</strong> Easiest setup, fast deployment, good free tier.</p>
+            </div>
+
+            <div class="option-card">
+                <h3>2. Render.com <span class="badge">FREE</span></h3>
+                <p><strong>Live Link Format:</strong> <code>https://your-app.onrender.com</code></p>
+                <div class="steps">
+                    <ol>
+                        <li>Visit <a href="https://render.com" target="_blank">render.com</a></li>
+                        <li>Sign in with GitHub</li>
+                        <li>Create "Web Service" → Connect repo</li>
+                        <li>Build Command: <code>composer install</code></li>
+                        <li>Start Command: <code>php -S 0.0.0.0:$PORT</code></li>
+                        <li>Add environment variables</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="option-card">
+                <h3>3. Heroku <span class="badge">CLASSIC</span></h3>
+                <p><strong>Live Link Format:</strong> <code>https://your-app.herokuapp.com</code></p>
+                <div class="steps">
+                    <ol>
+                        <li>Install <a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank">Heroku CLI</a></li>
+                        <li>Run: <code>heroku login</code></li>
+                        <li>Run: <code>heroku create your-app-name</code></li>
+                        <li>Set environment variables (see below)</li>
+                        <li>Run: <code>git push heroku main</code></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="margin: 2rem 0 1rem;">🔐 Environment Variables</h2>
+        <div class="steps">
+            <p>Add these in your hosting platform's dashboard:</p>
+            <pre style="background: #2d2d2d; color: #f8f8f2; padding: 1rem; border-radius: 5px; overflow-x: auto;">
+DB_HOST=gateway01.ap-southeast-1.prod.aws.tidbcloud.com
+DB_PORT=4000
+DB_NAME=test
+DB_USERNAME=your_tidb_username
+DB_PASSWORD=your_tidb_password
+APP_ENV=production
+APP_DEBUG=false</pre>
+            <p style="margin-top: 1rem;"><strong>Note:</strong> Replace <code>your_tidb_username</code> and <code>your_tidb_password</code> with your actual TiDB credentials.</p>
+        </div>
+
+        <h2 style="margin: 2rem 0 1rem;">🎯 After Deployment</h2>
+        <div class="steps">
+            <p><strong>Customer Access:</strong></p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li>🏠 Homepage: <code>https://your-live-link.com/</code></li>
+                <li>🛍️ Shop: <code>https://your-live-link.com/shop.php</code></li>
+            </ul>
+            <br>
+            <p><strong>Admin Access:</strong></p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li>🔐 Admin Panel: <code>https://your-live-link.com/admin/login.php</code></li>
+                <li>📧 Email: <code>admin@kowsalyacake.com</code></li>
+                <li>🔑 Password: <code>admin123</code></li>
+            </ul>
+            <div class="warning" style="margin-top: 1rem;">
+                <strong>⚠️ Security:</strong> Change the admin password immediately after first login!
+            </div>
+        </div>
+
+        <h2 style="margin: 2rem 0 1rem;">📚 Documentation</h2>
+        <div class="steps">
+            <ul>
+                <li><strong>README.md</strong> - Complete project documentation</li>
+                <li><strong>DEPLOYMENT.md</strong> - Step-by-step deployment guide</li>
+                <li><strong>FIXES_SUMMARY.md</strong> - What was fixed in your project</li>
+                <li><strong>.env.example</strong> - Environment configuration template</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>🎉 Your website is ready to deploy!</p>
+            <p>Choose a hosting platform above and follow the steps to get your live link.</p>
+            <p style="margin-top: 1rem;">Made with ❤️ by Aatheeswaran M</p>
+        </div>
+    </div>
+</body>
+</html>
