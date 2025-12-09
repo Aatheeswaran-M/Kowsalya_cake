@@ -1,0 +1,9 @@
+# Nixpacks Configuration for Railway
+[phases.setup]
+nixPkgs = ['php82', 'php82Extensions.pdo', 'php82Extensions.pdo_mysql', 'php82Extensions.mysqli', 'php82Extensions.mbstring']
+
+[phases.install]
+cmds = ['echo "PHP environment ready"']
+
+[start]
+cmd = 'php -S 0.0.0.0:$PORT'

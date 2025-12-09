@@ -1,0 +1,3 @@
+# Enable GitHub Pages from /docs folder
+# This will show a landing page that redirects to the actual PHP website
+theme: jekyll-theme-minimal
